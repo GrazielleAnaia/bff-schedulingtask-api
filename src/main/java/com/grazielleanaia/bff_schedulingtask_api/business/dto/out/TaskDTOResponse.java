@@ -1,4 +1,4 @@
-package com.grazielleanaia.bff_schedulingtask_api.business.dto;
+package com.grazielleanaia.bff_schedulingtask_api.business.dto.out;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Builder
 
-public class TaskDTO {
+public class TaskDTOResponse {
 
     private String id;
 
