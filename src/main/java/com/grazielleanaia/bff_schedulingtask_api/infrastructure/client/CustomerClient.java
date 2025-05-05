@@ -1,9 +1,13 @@
 package com.grazielleanaia.bff_schedulingtask_api.infrastructure.client;
 
 
-import com.grazielleanaia.bff_schedulingtask_api.business.dto.CustomerDTO;
-import com.grazielleanaia.bff_schedulingtask_api.business.dto.PhoneDTO;
-import com.grazielleanaia.bff_schedulingtask_api.business.dto.ResidenceDTO;
+import com.grazielleanaia.bff_schedulingtask_api.business.dto.in.CustomerDTORequest;
+import com.grazielleanaia.bff_schedulingtask_api.business.dto.in.LoginDTORequest;
+import com.grazielleanaia.bff_schedulingtask_api.business.dto.in.PhoneDTORequest;
+import com.grazielleanaia.bff_schedulingtask_api.business.dto.in.ResidenceDTORequest;
+import com.grazielleanaia.bff_schedulingtask_api.business.dto.out.CustomerDTOResponse;
+import com.grazielleanaia.bff_schedulingtask_api.business.dto.out.PhoneDTOResponse;
+import com.grazielleanaia.bff_schedulingtask_api.business.dto.out.ResidenceDTOResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,44 +18,44 @@ import java.util.List;
 public interface CustomerClient {
 
     @GetMapping("/customer")
-    CustomerDTO findCustomerByEmail(@RequestParam("email") String email,
-                                    @RequestHeader("Authorization") String token);
+    CustomerDTOResponse findCustomerByEmail(@RequestParam("email") String email,
+                                            @RequestHeader("Authorization") String token);
 
     @PostMapping
-    CustomerDTO createCustomer(@RequestBody CustomerDTO customerDTO);
+    CustomerDTOResponse createCustomer(@RequestBody CustomerDTORequest customerDTO);
 
     @PostMapping("/login")
-    public String login(@RequestBody CustomerDTO customerDTO);
+    public String login(@RequestBody LoginDTORequest loginDTORequest);
 
 
     @GetMapping("/all")
-    List<CustomerDTO> findAllCustomer();
+    List<CustomerDTOResponse> findAllCustomer();
 
     @DeleteMapping("/{email}")
     void deleteCustomer(@PathVariable String email,
                         @RequestHeader("Authorization") String token);
 
     @PutMapping
-    CustomerDTO updateCustomer(@RequestBody CustomerDTO customerDTO,
-                               @RequestHeader("Authorization") String token);
+    CustomerDTOResponse updateCustomer(@RequestBody CustomerDTORequest customerDTO,
+                                       @RequestHeader("Authorization") String token);
 
     @PutMapping("/residence")
-    ResidenceDTO updateResidence(@RequestBody ResidenceDTO residenceDTO,
+    ResidenceDTOResponse updateResidence(@RequestBody ResidenceDTORequest residenceDTO,
+                                         @RequestParam("id") Long id,
+                                         @RequestHeader("Authorization") String token);
+
+    @PutMapping("/phone")
+    PhoneDTOResponse updatePhone(@RequestBody PhoneDTORequest phoneDTO,
                                  @RequestParam("id") Long id,
                                  @RequestHeader("Authorization") String token);
 
-    @PutMapping("/phone")
-    PhoneDTO updatePhone(@RequestBody PhoneDTO phoneDTO,
-                         @RequestParam("id") Long id,
-                         @RequestHeader("Authorization") String token);
-
     @PostMapping("/residence")
-    ResidenceDTO addResidence(@RequestBody ResidenceDTO residenceDTO,
-                              @RequestHeader("Authorization") String token);
+    ResidenceDTOResponse addResidence(@RequestBody ResidenceDTORequest residenceDTO,
+                                      @RequestHeader("Authorization") String token);
 
     @PostMapping("/phone")
-    PhoneDTO addPhone(@RequestBody PhoneDTO phoneDTO,
-                      @RequestHeader("Authorization") String token);
+    PhoneDTOResponse addPhone(@RequestBody PhoneDTORequest phoneDTO,
+                              @RequestHeader("Authorization") String token);
 
 
 }

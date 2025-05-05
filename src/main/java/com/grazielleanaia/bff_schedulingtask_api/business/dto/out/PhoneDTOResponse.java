@@ -1,4 +1,4 @@
-package com.grazielleanaia.bff_schedulingtask_api.business.dto;
+package com.grazielleanaia.bff_schedulingtask_api.business.dto.out;
 
 import lombok.*;
 
@@ -8,7 +8,7 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 
-public class PhoneDTO {
+public class PhoneDTOResponse {
 
 
     private String number;

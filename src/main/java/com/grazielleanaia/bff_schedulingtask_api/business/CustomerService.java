@@ -1,8 +1,12 @@
 package com.grazielleanaia.bff_schedulingtask_api.business;
 
-import com.grazielleanaia.bff_schedulingtask_api.business.dto.CustomerDTO;
-import com.grazielleanaia.bff_schedulingtask_api.business.dto.PhoneDTO;
-import com.grazielleanaia.bff_schedulingtask_api.business.dto.ResidenceDTO;
+import com.grazielleanaia.bff_schedulingtask_api.business.dto.in.CustomerDTORequest;
+import com.grazielleanaia.bff_schedulingtask_api.business.dto.in.LoginDTORequest;
+import com.grazielleanaia.bff_schedulingtask_api.business.dto.in.PhoneDTORequest;
+import com.grazielleanaia.bff_schedulingtask_api.business.dto.in.ResidenceDTORequest;
+import com.grazielleanaia.bff_schedulingtask_api.business.dto.out.CustomerDTOResponse;
+import com.grazielleanaia.bff_schedulingtask_api.business.dto.out.PhoneDTOResponse;
+import com.grazielleanaia.bff_schedulingtask_api.business.dto.out.ResidenceDTOResponse;
 import com.grazielleanaia.bff_schedulingtask_api.infrastructure.client.CustomerClient;
 import lombok.RequiredArgsConstructor;
 
@@ -17,20 +21,20 @@ public class CustomerService {
     private final CustomerClient customerClient;
 
 
-    public CustomerDTO createCustomer(CustomerDTO customerDTO) {
+    public CustomerDTOResponse createCustomer(CustomerDTORequest customerDTO) {
         return customerClient.createCustomer(customerDTO);
     }
 
-    public String login(CustomerDTO customerDTO) {
-        return customerClient.login(customerDTO);
+    public String login(LoginDTORequest loginDTORequest) {
+        return customerClient.login(loginDTORequest);
     }
 
-    public List<CustomerDTO> getAllCustomers() {
+    public List<CustomerDTOResponse> getAllCustomers() {
         return customerClient.findAllCustomer();
 
     }
 
-    public CustomerDTO getCustomerByEmail(String email, String token) {
+    public CustomerDTOResponse getCustomerByEmail(String email, String token) {
         return customerClient.findCustomerByEmail(email, token);
     }
 
@@ -38,23 +42,23 @@ public class CustomerService {
         customerClient.deleteCustomer(email, token);
     }
 
-    public CustomerDTO updateCustomer(CustomerDTO customerDTO, String token) {
+    public CustomerDTOResponse updateCustomer(CustomerDTORequest customerDTO, String token) {
         return customerClient.updateCustomer(customerDTO, token);
     }
 
-    public ResidenceDTO updateResidence(ResidenceDTO residenceDTO, Long id, String token) {
+    public ResidenceDTOResponse updateResidence(ResidenceDTORequest residenceDTO, Long id, String token) {
         return customerClient.updateResidence(residenceDTO, id, token);
     }
 
-    public PhoneDTO updatePhone(PhoneDTO phoneDTO, Long id, String token) {
+    public PhoneDTOResponse updatePhone(PhoneDTORequest phoneDTO, Long id, String token) {
         return customerClient.updatePhone(phoneDTO, id, token);
     }
 
-    public ResidenceDTO addResidence(ResidenceDTO residenceDTO, String token) {
+    public ResidenceDTOResponse addResidence(ResidenceDTORequest residenceDTO, String token) {
         return customerClient.addResidence(residenceDTO, token);
     }
 
-    public PhoneDTO addPhone(PhoneDTO phoneDTO, String token) {
+    public PhoneDTOResponse addPhone(PhoneDTORequest phoneDTO, String token) {
         return customerClient.addPhone(phoneDTO, token);
     }
 
