@@ -25,8 +25,8 @@ public class CustomerService {
         return customerClient.login(customerDTO);
     }
 
-    public List<CustomerDTO> getAllCustomers(String token) {
-        return customerClient.findAllCustomer(token);
+    public List<CustomerDTO> getAllCustomers() {
+        return customerClient.findAllCustomer();
 
     }
 
