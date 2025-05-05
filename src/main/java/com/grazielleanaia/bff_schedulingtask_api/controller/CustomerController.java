@@ -58,8 +58,8 @@ public class CustomerController {
     @ApiResponse(responseCode = "403", description = "Customer not found")
     @ApiResponse(responseCode = "500", description = "Server error")
     @ApiResponse(responseCode = "401", description = "Invalid credentials")
-    public List<CustomerDTO> findAllCustomer(@RequestHeader("Authorization") String token) {
-        return customerService.getAllCustomers(token);
+    public List<CustomerDTO> findAllCustomer() {
+        return customerService.getAllCustomers();
     }
 
     @DeleteMapping("/{email}")

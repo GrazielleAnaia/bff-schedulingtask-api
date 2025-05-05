@@ -25,7 +25,7 @@ public interface CustomerClient {
 
 
     @GetMapping("/all")
-    List<CustomerDTO> findAllCustomer(@RequestHeader("Authorization") String token);
+    List<CustomerDTO> findAllCustomer();
 
     @DeleteMapping("/{email}")
     void deleteCustomer(@PathVariable String email,
