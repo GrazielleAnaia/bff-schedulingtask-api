@@ -14,8 +14,6 @@ import java.time.LocalDateTime;
 
 public class TaskDTORequest {
 
-    private String id;
-
     private String taskName;
 
     private String description;
