@@ -25,7 +25,7 @@ public interface CustomerClient {
     CustomerDTOResponse createCustomer(@RequestBody CustomerDTORequest customerDTO);
 
     @PostMapping("/login")
-    public String login(@RequestBody LoginDTORequest loginDTORequest);
+    String login(@RequestBody LoginDTORequest loginDTORequest);
 
 
     @GetMapping("/all")
