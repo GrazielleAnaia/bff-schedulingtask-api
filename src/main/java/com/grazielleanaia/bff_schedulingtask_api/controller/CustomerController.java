@@ -45,7 +45,7 @@ public class CustomerController {
     @ApiResponse(responseCode = "401", description = "Invalid credentials")
     @ApiResponse(responseCode = "500", description = "Server error")
     public String login(@RequestBody LoginDTORequest loginDTORequest) {
-        return customerService.login(loginDTORequest);
+        return customerService.loginCustomer(loginDTORequest);
     }
 
     @GetMapping

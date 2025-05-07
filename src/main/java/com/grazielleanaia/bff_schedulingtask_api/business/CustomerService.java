@@ -25,7 +25,7 @@ public class CustomerService {
         return customerClient.createCustomer(customerDTO);
     }
 
-    public String login(LoginDTORequest loginDTORequest) {
+    public String loginCustomer(LoginDTORequest loginDTORequest) {
         return customerClient.login(loginDTORequest);
     }
 
