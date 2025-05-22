@@ -7,6 +7,7 @@ import com.grazielleanaia.bff_schedulingtask_api.business.dto.in.ResidenceDTOReq
 import com.grazielleanaia.bff_schedulingtask_api.business.dto.out.CustomerDTOResponse;
 import com.grazielleanaia.bff_schedulingtask_api.business.dto.out.PhoneDTOResponse;
 import com.grazielleanaia.bff_schedulingtask_api.business.dto.out.ResidenceDTOResponse;
+import com.grazielleanaia.bff_schedulingtask_api.business.dto.out.ViaCepDTOResponse;
 import com.grazielleanaia.bff_schedulingtask_api.infrastructure.client.CustomerClient;
 import lombok.RequiredArgsConstructor;
 
@@ -19,6 +20,10 @@ import java.util.List;
 
 public class CustomerService {
     private final CustomerClient customerClient;
+
+public ViaCepDTOResponse findCep(String cep) {
+    return customerClient.buscaDadosViaCep(cep);
+}
 
 
     public CustomerDTOResponse createCustomer(CustomerDTORequest customerDTO) {

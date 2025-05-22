@@ -9,6 +9,7 @@ import com.grazielleanaia.bff_schedulingtask_api.business.dto.in.ResidenceDTOReq
 import com.grazielleanaia.bff_schedulingtask_api.business.dto.out.CustomerDTOResponse;
 import com.grazielleanaia.bff_schedulingtask_api.business.dto.out.PhoneDTOResponse;
 import com.grazielleanaia.bff_schedulingtask_api.business.dto.out.ResidenceDTOResponse;
+import com.grazielleanaia.bff_schedulingtask_api.business.dto.out.ViaCepDTOResponse;
 import com.grazielleanaia.bff_schedulingtask_api.infrastructure.security.SecurityConfig;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -136,6 +137,16 @@ public class CustomerController {
     public ResponseEntity<PhoneDTOResponse> addPhone(@RequestBody PhoneDTORequest phoneDTO,
                                                      @RequestHeader(value = "Authorization", required = false) String token) {
         return ResponseEntity.ok(customerService.addPhone(phoneDTO, token));
+    }
+
+    @GetMapping("/endereco/{cep}")
+    @Operation(summary = "Find cep via cep", description = "Find cep via external api")
+    @ApiResponse(responseCode = "200", description = "Cep successfully found")
+    @ApiResponse(responseCode = "400", description = "Invalid cep")
+    @ApiResponse(responseCode = "500", description = "Server error")
+
+    public ResponseEntity<ViaCepDTOResponse> findCepViaCep(@PathVariable("cep") String cep) {
+        return ResponseEntity.ok(customerService.findCep(cep));
     }
 
 
