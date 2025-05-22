@@ -2,6 +2,7 @@ package com.grazielleanaia.bff_schedulingtask_api.controller;
 
 
 import com.grazielleanaia.bff_schedulingtask_api.infrastructure.exception.ConflictException;
+import com.grazielleanaia.bff_schedulingtask_api.infrastructure.exception.IllegalArgumentException;
 import com.grazielleanaia.bff_schedulingtask_api.infrastructure.exception.ResourceNotFoundException;
 import com.grazielleanaia.bff_schedulingtask_api.infrastructure.exception.UnauthorizedException;
 import org.springframework.http.HttpStatus;
@@ -25,5 +26,10 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(UnauthorizedException.class)
     public ResponseEntity<String> handleUnauthorizedException(UnauthorizedException ex) {
         return new ResponseEntity(ex.getMessage(), HttpStatus.UNAUTHORIZED);
+    }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<String> handleIllegalArgumentException(IllegalArgumentException ex) {
+        return new ResponseEntity(ex.getMessage(), HttpStatus.BAD_REQUEST);
     }
 }

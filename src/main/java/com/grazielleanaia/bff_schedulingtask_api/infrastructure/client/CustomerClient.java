@@ -8,6 +8,7 @@ import com.grazielleanaia.bff_schedulingtask_api.business.dto.in.ResidenceDTOReq
 import com.grazielleanaia.bff_schedulingtask_api.business.dto.out.CustomerDTOResponse;
 import com.grazielleanaia.bff_schedulingtask_api.business.dto.out.PhoneDTOResponse;
 import com.grazielleanaia.bff_schedulingtask_api.business.dto.out.ResidenceDTOResponse;
+import com.grazielleanaia.bff_schedulingtask_api.business.dto.out.ViaCepDTOResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
@@ -57,5 +58,7 @@ public interface CustomerClient {
     PhoneDTOResponse addPhone(@RequestBody PhoneDTORequest phoneDTO,
                               @RequestHeader("Authorization") String token);
 
+    @GetMapping("/endereco/{cep}")
+    ViaCepDTOResponse buscaDadosViaCep(@PathVariable("cep") String cep);
 
 }
