@@ -24,6 +24,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/customer")
 @RequiredArgsConstructor
+//@CrossOrigin(origins = {"http://localhost:3000"})
 @Tag(name = "Customer", description = "Customer Registration")
 @SecurityRequirement(name = SecurityConfig.SECURITY_SCHEME)
 
